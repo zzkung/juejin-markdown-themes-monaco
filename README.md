@@ -1,6 +1,6 @@
-# juejin 默认主题
+# juejin-markdown-themes-monaco
 
-主题列表：https://github.com/xitu/juejin-markdown-themes
+掘金 markdown 文章主题 monaco
 
 ## License
 
