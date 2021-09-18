@@ -1,64 +1,90 @@
 $theme-font: system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
 $monospace-font: Menlo, Monaco, Consolas, 'Courier New', monospace;
-$line-space: 22px;
+$title-font: Nunito,Helvetica Neue,Helvetica,sans-serif;
+$line-space: 2.2rem;
 
 html {
-  font-family: $theme-font;
   font-size: 16px;
 }
+
 .markdown-body {
+  font-family: $theme-font;
   word-break: break-word;
-  line-height: 1.75;
+  line-height: 1.4;
+  font-size: 1.3rem;
   font-weight: 400;
   overflow-x: hidden;
-  color: #333;
+  color: #000;
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    line-height: 1.5;
-    margin-top: 35px;
-    margin-bottom: 10px;
-    padding-bottom: 5px;
+  blockquote, dd, dl, figure, h1, h2, h3, h4, h5, h6, hr, p, pre {
+    margin: 0;
   }
+
+  blockquote:not(:last-child), dl:not(:last-child), ol:not(:last-child), p:not(:last-child), pre:not(:last-child), table:not(:last-child), ul:not(:last-child) {
+    margin-bottom: $line-space;
+  }
+
   h1 {
-    font-family: Nunito,Helvetica Neue,Helvetica,sans-serif;
-    font-size: 3rem;
+    font-family: $title-font;
     font-weight: 700;
     line-height: 1.1;
     color: #202026;
     margin-bottom: 1.7rem;
+    font-size: 3rem;
+    &:not(:first-child) {
+      margin-top: 1rem;
+    }
   }
+
+  h2, h3, h4, h5, h6 {
+    color: #202026;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
   h2 {
-    padding-bottom: 12px;
-    font-size: 24px;
-    border-bottom: 1px solid #ececec;
+    font-size: 2.25rem;
+    margin-bottom: .75rem;
+    &:not(:first-child) {
+      margin-top: 2.5rem;
+    }
+    &+h3 {
+      margin-top: 1.5rem !important;
+    }
   }
+
   h3 {
-    font-size: 18px;
-    padding-bottom: 0;
+    color: #3f3f4a;
+    font-weight: 800;
+    font-size: 1.875rem;
+    margin-bottom: 1.25rem;
+    &:not(:first-child) {
+      margin-top: 2.5rem;
+    }
   }
+
   h4 {
-    font-size: 16px;
+    margin-top: 3.5rem;
+    margin-bottom: 1rem;
+    color: #1e1e24;
+    font-weight: 800;
   }
+  
   h5 {
-    font-size: 15px;
+    font-size: 1.125rem;
+    margin-bottom: .8888rem;
   }
+
   h6 {
-    margin-top: 5px;
+    font-size: 1rem;
+    margin-bottom: 1rem;
   }
 
-  p {
-    line-height: inherit;
-    margin-top: $line-space;
-    margin-bottom: $line-space;
-  }
-
-  img {
+  img, video {
+    display: block;
     max-width: 100%;
+    height: auto;
+    vertical-align: middle;
   }
 
   hr {
@@ -73,31 +99,60 @@ html {
   code {
     font-family: $monospace-font;
     word-break: break-word;
-    border-radius: 3px;
     overflow-x: auto;
-    background-color: rgba(27,31,35,.06);
-    color: #5b6ac4;
     font-size: 1em;
     font-weight: 200;
+    color: #5b6ac4;
+    background-color: rgba(27,31,35,.06);
     padding: .15rem .55rem;
     margin: 0;
+    border-radius: 3px;
   }
 
   pre {
     font-family: $monospace-font;
     overflow: auto;
     position: relative;
+    font-size: 1rem;
     line-height: 1.75;
     > code {
-      font-size: 12px;
-      padding: 15px 12px;
+      position: relative;
+      line-height: 1.5;
+      padding: 1.5rem 1.3rem;
       margin: 0;
       word-break: normal;
       display: block;
       overflow-x: auto;
-      color: #333;
-      background: #f8f8f8;
+      color: #fff;
+      background: #282c34;
+      border-radius: 6px;
+      &::before {
+        position: absolute;
+        z-index: 3;
+        top: .7rem;
+        right: 1rem;
+        color: rgba($color: #ffffff, $alpha: .4);
+      }
+      &[class=language-markdown] {
+        color: #666;
+        background: #f8f8f8;
+        &::before {
+          content: "markdown";
+          color: rgba($color: #000000, $alpha: .4);
+        }
+      }
+      &[class=language-html] {
+        &::before {
+          content: "html";
+        }
+      }
+      &[class=language-javascript] {
+        &::before {
+          content: "javascript";
+        }
+      }
     }
+    
   }
 
   a {
@@ -112,6 +167,7 @@ html {
 
   table {
     display: inline-block !important;
+    font-size: 12px;
     width: auto;
     max-width: 100%;
     overflow: auto;
@@ -181,15 +237,36 @@ html {
     list-style: none;
   }
 
-  @media (max-width: 720px) {
+  @media (max-width: 768px) {
+    blockquote:not(:last-child), dl:not(:last-child), ol:not(:last-child), p:not(:last-child), pre:not(:last-child), table:not(:last-child), ul:not(:last-child) {
+      margin-bottom: 1.8rem;
+    }
     h1 {
-      font-size: 24px;
+      font-size: 2.25rem;
     }
     h2 {
-      font-size: 20px;
+      font-size: 1.875rem;
+      &+h3 {
+        margin-top: 1rem !important;
+      }
     }
     h3 {
-      font-size: 18px;
+      font-size: 1.5rem;
+      margin-bottom: .75rem;
+    }
+    h4 {
+      font-size: 1.25rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    h1 {
+      font-size: 1.875rem;
+    }
+    h2 {
+      margin-bottom: .5rem;
+      font-size: 800;
+      font-size: 1.5rem;
     }
   }
 }
